@@ -1,19 +1,15 @@
 "use client"
 
 import Carousel from "../components/carousel"
-import Categories from "../components/categories"
+import Upcomings from "../components/upcomings"
 import Promote from "../components/promote"
-import { Button } from "./livekit/ui"
 
 export default function Home() {
   return (
-  <main className="pt-32 bg-black px-8" >
+  <main className="pt-32 pb-6" >
       <Carousel />   
-      <Categories />   
+      <Upcomings />   
       <Promote />
-      <Button>
-        Hello
-      </Button>
   </main>
 
   )
