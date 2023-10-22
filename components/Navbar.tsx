@@ -4,7 +4,6 @@ import Link from "next/link"
 import { useEffect, useState } from "react" 
 import { usePathname } from "next/navigation"
 import Image from "next/image"
-import { gsap } from "gsap"
 import { AlignRight, X } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import Logo from "./logo"
@@ -14,13 +13,9 @@ export default  function Navbar() {
 
     const [showMenu, setShowMenu] = useState(false)
     const [rotate, setRotate] = useState(false)
+      const [scrolled, setScrolled] = useState(false);
 
     const pathname = usePathname();
-
-    useEffect(() => {
-        const tl = gsap.timeline({ defaults: {duration: 1} })
-    tl.fromTo("nav", { y: "-100%" }, { y: "0%" })
-    }, [])
 
     useEffect(() => {
         if(showMenu) {
@@ -31,26 +26,47 @@ export default  function Navbar() {
         }
     },[showMenu])
 
+      useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
     return (
         <main className={` ${pathname === '/authentication' || pathname === '/authentication/login' ? "hidden" : ""}`}>
-            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={`  bg-opacity-30 bg-white z-50 hidden lg:flex justify-center items-center fixed top-0 left-0 right-0 py-4 lg:px-8 xl:px-12`}>
-                <div className=" w-full hidden lg:flex justify-between text-base text-black items-center">
+            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname ==='/browse' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 hidden lg:flex justify-center items-center fixed top-0 left-0 right-0 py-4 lg:px-8 xl:px-12`}>
+                <div className=" w-full hidden lg:flex justify-between text-base  items-center">
                     <Logo />
                     <div className="flex items-center gap-8">
-                        <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}>Browse events</Link>
-                        <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}>Blogs</Link>
-                        <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}>About</Link>
-                        <Link href={'/'} className={buttonVariants({ variant: "default", size: 'lg' })}>List Your Eent</Link>
-                        <Link href={'/authentication'} className=" rounded-md py-2 px-3 border border-black ">LOG IN</Link>
+                        <Link href={'/browse'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>Browse events</p></Link>
+                        <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>About</p></Link>
+                        <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>Blog</p></Link>
+                        
+                        {pathname === '/browse' ?
+                        (
+                        <Link href={'/'} className={buttonVariants({ variant: "defaultWhite", size: 'lg' })}>List your event</Link>
+                        ) : (
+                        <Link href={'/'} className={buttonVariants({ variant: "defaultBlack", size: 'lg' })}>List your event</Link>
+                        )}
+
+                        <Link href={'/authentication'} className={` ${pathname === '/browse' ? 'border-white' : 'border-black'} rounded-md py-2 px-3 border `}>LOG IN</Link>
                     </div>
                 </div>
             </nav>
                         {/* smaller screens */}
-            <div className="lg:hidden text-white fixed w-full px-3 py-4 bg-black flex justify-between items-center top-0 z-50">
-                    <Link href="/">
-                        EVENT
-                    </Link>
-                <div onClick={() => setShowMenu(true)} >
+            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={`  bg-opacity-30 bg-white z-50 flex w-full lg:hidden justify-between items-center fixed top-0 left-0 right-0 py-3 px-4`}>
+                <Logo />
+                <div onClick={() => setShowMenu(true)} className="bg-black text-white p-1.5 rounded-full" >
                     <AlignRight />
                 </div>
                
@@ -63,7 +79,7 @@ export default  function Navbar() {
                         <Link className="" onClick={() => setShowMenu(false)} href={'/'}>Pricing</Link>
                     </div>
                 </div>
-            </div>
+            </nav>
         </main>
     )
   }

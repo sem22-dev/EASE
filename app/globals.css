@@ -98,3 +98,88 @@
     @apply bg-background text-foreground;
   }
 }
+
+.under-ani {
+  position: relative;
+  text-decoration: none;
+}
+
+/* for navbar items underline black */
+.underline-black::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+}
+
+/* for navbar items underline white */
+.underline-white::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+}
+
+.under-ani:hover::before {
+  transform: scaleX(1);
+}
+
+/* footer underline */
+.footer-underline {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-underline:hover {
+  color: #000;
+}
+
+/* Animate the line from the left */
+.footer-underline::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+}
+
+.footer-underline:hover::before {
+  transform: scaleX(1);
+}
+
+/* Add this CSS to your styles */
+.event-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth; /* Add smooth scrolling effect */
+  white-space: nowrap;
+}
+
+/* Style for individual event cards */
+.event-card {
+  width: 250px; /* Adjust the width as needed */
+  margin-right: 10px; /* Adjust the margin as needed */
+  /* Add any other styles you need for your event cards */
+}
+

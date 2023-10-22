@@ -33,6 +33,7 @@
     "formik-mui": "^5.0.0-alpha.0",
     "formik-mui-lab": "^1.0.0",
     "formik-wizard-form": "^2.1.0",
+    "framer-motion": "^10.16.4",
     "gsap": "^3.12.2",
     "install": "^0.13.0",
     "lucide-react": "^0.279.0",
