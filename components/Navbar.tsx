@@ -43,8 +43,8 @@ export default  function Navbar() {
   }, []);
 
     return (
-        <main className={` ${pathname === '/authentication' || pathname === '/authentication/login' ? "hidden" : ""}`}>
-            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname ==='/browse' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 hidden lg:flex justify-center items-center fixed top-0 left-0 right-0 py-4 lg:px-8 xl:px-12`}>
+        <div className={` ${pathname === '/authentication' || pathname === '/authentication/login' ? "hidden" : " inline"}`}>
+            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname ==='/browse' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 hidden lg:flex justify-center items-center sticky top-0  py-4 lg:px-8 xl:px-12`}>
                 <div className=" w-full hidden lg:flex justify-between text-base  items-center">
                     <Logo />
                     <div className="flex items-center gap-8">
@@ -64,7 +64,7 @@ export default  function Navbar() {
                 </div>
             </nav>
                         {/* smaller screens */}
-            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={`  bg-opacity-30 bg-white z-50 flex w-full lg:hidden justify-between items-center fixed top-0 left-0 right-0 py-3 px-4`}>
+            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname ==='/browse' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 flex w-full lg:hidden justify-between items-center sticky top-0 py-3 px-4`}>
                 <Logo />
                 <div onClick={() => setShowMenu(true)} className="bg-black text-white p-1.5 rounded-full" >
                     <AlignRight />
@@ -80,6 +80,6 @@ export default  function Navbar() {
                     </div>
                 </div>
             </nav>
-        </main>
+        </div>
     )
   }

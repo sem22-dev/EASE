@@ -57,7 +57,7 @@ export default function Upcomings() {
         <p className="text-lg md:w-[650px] text-black font-medium">
           Check out some of the most popular events coming up in your city, from club nights and gigs to artist signings and comedy shows.
         </p>
-        <Link href={'/'} className={buttonVariants({ variant: "default" })}>
+        <Link href={'/'} className={buttonVariants({ variant: "defaultBlack" })}>
           See more
         </Link>
       </div>
