@@ -1,10 +1,14 @@
 import { Zap } from "lucide-react"
+import EventCards from "../testting/page"
 
 export default function Browse(){
     return(
-        <main className="h-screen bg-black flex justify-start items-start gap-2  py-6 lg:px-8 xl:px-24">
-            <Category name={'Shows'}/>
-            <Category name={'Party'}/>
+        <main className="h-fit bg-black py-6 px-4  xl:px-24">
+            <div className=" flex justify-start items-start gap-2">
+                <Category name={'Shows'}/>
+                <Category name={'Party'}/>
+            </div>
+            <EventCards />
         </main>
     )
 }

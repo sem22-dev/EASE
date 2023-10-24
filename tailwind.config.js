@@ -16,6 +16,13 @@ module.exports = {
       },
     },
     extend: {
+      gridTemplateColumns: {
+        // For larger screens, display two cards per row
+        'fluid': 'repeat(auto-fit, minmax(200px, 1fr))',
+
+        // For smaller screens (e.g., mobile), display one card per row
+        'fluid-mobile': 'repeat(auto-fit, minmax(160px, 1fr))',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

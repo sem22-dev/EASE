@@ -6,7 +6,7 @@ import Promote from "../components/promote"
 
 export default function Home() {
   return (
-  <main className="pt-32 pb-6" >
+  <main className=" py-10" >
       <Carousel />   
       <Upcomings />   
       <Promote />

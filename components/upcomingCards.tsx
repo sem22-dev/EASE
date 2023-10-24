@@ -92,15 +92,31 @@ export default function UpcomingCards() {
         >
         {upcomingEvents.map((event) => (
         <SwiperSlide key={event.id}>
-          <Link href={'/'} key={event.id} className="relative rounded-lg overflow-hidden flex flex-col border-red-500">
-            <Image src={event.imageSrc} width={1000} height={1000} alt={event.title} className="object-cover rounded-lg" />
-            <div className="flex flex-col justify-end text-black py-2">
-              <h3 className="text-lg font-medium">{event.title}</h3>
-              <p className="text-gray-500 text-sm">{event.date}</p>
-              <p className="text-sm text-gray-500">ORION LIVE CLUB</p>
-              <p className="text-sm text-gray-500">$7</p>
-            </div>
-          </Link>
+          <Link
+  href={'/'}
+  key={event.id}
+  className="relative rounded-lg overflow-hidden flex flex-col border-red-500"
+>
+  <div className="relative group">
+    <Image
+      src={event.imageSrc}
+      width={1000}
+      height={1000}
+      alt={event.title}
+      className="object-cover rounded-lg transition-transform group-hover:scale-100"
+    />
+    <div className="group-hover:flex items-center justify-center rounded-lg bg-black bg-opacity-50 absolute top-0 left-0 right-0 bottom-0 hidden">
+      <span className="text-white p-2 border border-orange-500 rounded">Get ticket</span>
+    </div>
+  </div>
+  <div className="flex flex-col justify-end text-black py-2">
+    <h3 className="text-lg font-medium">{event.title}</h3>
+    <p className="text-gray-500 text-sm">{event.date}</p>
+    <p className="text-sm text-gray-500">ORION LIVE CLUB</p>
+    <p className="text-sm text-gray-500">$7</p>
+  </div>
+</Link>
+
           </SwiperSlide>
         ))}
         </Swiper>

@@ -25,7 +25,7 @@ export default function MySwiperComponent() {
       >
         <Swiper
           grabCursor={true}
-          navigation={true}
+          // navigation={true}
           loop={true}
           spaceBetween={20}
           slidesPerView={2}
@@ -33,7 +33,7 @@ export default function MySwiperComponent() {
             delay: 1500,
             disableOnInteraction: false,
           }}
-          modules={[ FreeMode, Navigation, Autoplay]}
+          modules={[ FreeMode, Autoplay]}
           className='gameSwiper' 
         >
           <SwiperSlide>
@@ -93,7 +93,7 @@ export default function MySwiperComponent() {
             <Image
             width={1000}
             height={1000}
-              src="/event1.png" // Adjust the height (e.g., 650x450)
+              src="/event1.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 1"
               className=' h-[400px] object-cover w-[650px]'
             />
@@ -102,7 +102,7 @@ export default function MySwiperComponent() {
             <Image
             width={1000}
             height={1000}
-              src="/event2.jpg" // Adjust the height (e.g., 650x450)
+              src="/event2.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 2"
               className=' h-[400px] object-cover w-[650px]'
             />
@@ -111,7 +111,7 @@ export default function MySwiperComponent() {
             <Image
             width={1000}
             height={1000}
-              src="/event3.jpg" // Adjust the height (e.g., 650x450)
+              src="/event3.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 3"
               className=' h-[400px] object-cover w-[650px]'
             />
@@ -120,7 +120,7 @@ export default function MySwiperComponent() {
             <Image
             width={1000}
             height={1000}
-              src="/dogeNFT.png" // Adjust the height (e.g., 650x450)
+              src="/dogeNFT.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 4"
               className=' h-[400px] object-cover w-[650px]'
             />
