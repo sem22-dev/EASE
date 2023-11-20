@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/footer'
 import favoritRegular from 'next/font/local'
 import foggyRegular from 'next/font/local'
+import Providers from '@/components/providers'
 
 
 const roboto = Roboto({
@@ -24,15 +25,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  session,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  session: any
 }) {
   return (
     <html lang="en">
       <body className={` ${favoritR.variable} ${foggyR.variable} font-favoritR`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <Providers session={session}>
+          <Navbar />
+          {children}
+          <Footer />
+          </Providers>
       </body>
     </html>
   )

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { UserAuthForm } from "./components/user-auth-form"
 import { DemoCreateAccount } from "./create-account"
+import Logo from "@/components/logo"
 
 export const metadata: Metadata = {
   title: "Authentication",
@@ -31,7 +32,7 @@ export default function AuthenticationPage() {
       </div>
 
           <div className="relative z-20 flex items-center text-lg font-medium">
-            <Link href={'/'}>EVENT</Link>
+            <Logo />
           </div>
         </div>
         <div className="lg:p-8">

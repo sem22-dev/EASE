@@ -7,15 +7,19 @@ import Image from "next/image"
 import { AlignRight, X } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import Logo from "./logo"
+import { signOut, useSession } from "next-auth/react"
+import { User } from "lucide-react"
 
 
 export default  function Navbar() {
 
     const [showMenu, setShowMenu] = useState(false)
     const [rotate, setRotate] = useState(false)
-      const [scrolled, setScrolled] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [showProfileMenu, setShowProfileMenu] = useState(false);
 
     const pathname = usePathname();
+    const {data: session} = useSession();
 
     useEffect(() => {
         if(showMenu) {
@@ -42,6 +46,16 @@ export default  function Navbar() {
     };
   }, []);
 
+    const handleProfileClick = () => {
+    setShowProfileMenu(!showProfileMenu);
+    };
+
+    const handleLogout = () => {
+        // Handle logout logic here
+        signOut();
+    };
+
+
     return (
         <div className={` ${pathname === '/authentication' || pathname === '/authentication/login' ? "hidden" : " inline"} `}>
             <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname ==='/browse' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 hidden lg:flex justify-center items-center sticky top-0  py-4 lg:px-8 xl:px-12`}>
@@ -59,11 +73,38 @@ export default  function Navbar() {
                         <Link href={'/'} className={buttonVariants({ variant: "defaultBlack", size: 'lg' })}>List your event</Link>
                         )}
 
-                        <Link href={'/authentication'} className={` ${pathname === '/browse' ? 'border-white' : 'border-black'} rounded-md py-2 px-3 border `}>LOG IN</Link>
+                        {session ? (
+                        <div className="relative">
+                            <button onClick={handleProfileClick} className="focus:outline-none">
+                              {session.user?.image ? (
+                                      <Image src={session.user.image} alt="Profile Image" width={35} height={35} className="rounded-full"/>
+                                  ) : (
+                                      <User size={30} />
+                              )}
+                            </button>
+                            {showProfileMenu && (
+                                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
+                                    <button onClick={handleLogout} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                        Log Out
+                                    </button>
+                                    {/* Add more options as needed */}
+                                    <Link href={'/tickets'} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                        My Tickets
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <Link href={'/authentication/login'} className={` ${pathname === '/browse' ? 'border-white' : 'border-black'} rounded-md py-2 px-3 border `}>
+                            LOG IN
+                        </Link>
+                    )}
+
                     </div>
                 </div>
             </nav>
-             {/* Smaller screens */}
+
+      {/* Smaller screens */}
       <nav
         style={{ backdropFilter: 'blur(6.7px)' }}
         className={` ${

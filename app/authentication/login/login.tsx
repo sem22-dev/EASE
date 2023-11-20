@@ -12,15 +12,29 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {signIn} from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
+
 
 export function Login() {
+
+  const { data: session, status } = useSession();
+  const router = useRouter()
+
+  // If the user is already signed in, redirect to home page
+  if (session) {
+    router.push('/');
+    return null; // Optionally, you can return some loading indicator or message
+  }
+
   return (
     <Card className="mt-12">
       <CardHeader className="space-y-1 text-center">
         <CardTitle className="text-2xl">Login</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
-          <Button variant="outline">
+          <Button onClick={() => signIn('google')} variant="outline">
             <Icons.google className="mr-2 h-4 w-4" />
             Google
           </Button>

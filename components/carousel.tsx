@@ -11,7 +11,7 @@ import { motion } from 'framer-motion'
 
 export default function MySwiperComponent() {
   return (
-    <main className='px-3 z-0'>
+    <main className=' z-0 '>
       <motion.div 
         initial="hidden"
         whileInView="visible"
@@ -21,7 +21,7 @@ export default function MySwiperComponent() {
             hidden: { y: 75 }
         }}
         viewport={{ once: true }}
-        className='hidden md:block'
+        className='hidden md:block px-4 xl:px-12 2xl:px-24'
       >
         <Swiper
           grabCursor={true}
@@ -34,7 +34,7 @@ export default function MySwiperComponent() {
             disableOnInteraction: false,
           }}
           modules={[ FreeMode, Autoplay]}
-          className='gameSwiper' 
+          className='flex  justify-center items-center ' 
         >
           <SwiperSlide>
             <Image
@@ -42,7 +42,7 @@ export default function MySwiperComponent() {
             height={1000}
               src="/event1.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 1"
-              className=' h-[450px] object-cover w-[650px] rounded-xl'
+              className=' object-cover  rounded-xl'
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -51,7 +51,7 @@ export default function MySwiperComponent() {
             height={1000}
               src="/event2.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 2"
-              className=' h-[450px] object-cover w-[650px]  rounded-xl'
+              className=' object-cover   rounded-xl'
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -60,7 +60,7 @@ export default function MySwiperComponent() {
             height={1000}
               src="/event3.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 3"
-              className=' h-[450px] object-cover w-[650px]  rounded-xl'
+              className=' object-cover   rounded-xl'
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -69,16 +69,16 @@ export default function MySwiperComponent() {
             height={1000}
               src="/event3.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 3"
-              className=' h-[450px] object-cover w-[650px]  rounded-xl'
+              className=' object-cover  rounded-xl'
             />
           </SwiperSlide>
         </Swiper>
       </motion.div>
       {/* for mobile */}
-      <div className='md:hidden' style={{ zIndex: -1 }}>
+      <div className='md:hidden px-2 ' style={{ zIndex: -1 }}>
         <Swiper
           grabCursor={true}
-          navigation={true}
+          // navigation={true}
           loop={true}
           spaceBetween={20}
           slidesPerView={1}
@@ -87,7 +87,7 @@ export default function MySwiperComponent() {
             disableOnInteraction: false,
           }}
           modules={[ FreeMode, Navigation, Autoplay]}
-          className='gameSwiper ' 
+          className='gameSwiper' 
         >
           <SwiperSlide>
             <Image
@@ -95,7 +95,7 @@ export default function MySwiperComponent() {
             height={1000}
               src="/event1.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 1"
-              className=' h-[400px] object-cover w-[650px]'
+              className=' h-[400px] object-cover rounded-xl'
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -104,7 +104,7 @@ export default function MySwiperComponent() {
             height={1000}
               src="/event2.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 2"
-              className=' h-[400px] object-cover w-[650px]'
+              className=' h-[400px] object-cover rounded-xl'
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -113,7 +113,7 @@ export default function MySwiperComponent() {
             height={1000}
               src="/event3.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 3"
-              className=' h-[400px] object-cover w-[650px]'
+              className=' h-[400px] object-cover rounded-xl'
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -122,7 +122,7 @@ export default function MySwiperComponent() {
             height={1000}
               src="/dogeNFT.webp" // Adjust the height (e.g., 650x450)
               alt="Slide 4"
-              className=' h-[400px] object-cover w-[650px]'
+              className=' h-[400px] object-cover rounded-xl'
             />
           </SwiperSlide>
         </Swiper>
