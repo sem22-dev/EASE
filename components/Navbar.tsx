@@ -58,7 +58,7 @@ export default  function Navbar() {
 
     return (
         <div className={` ${pathname === '/authentication' || pathname === '/authentication/login' ? "hidden" : " inline"} `}>
-            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname ==='/browse' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 hidden lg:flex justify-center items-center sticky top-0  py-4 lg:px-8 xl:px-12`}>
+            <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname !== '/' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 hidden lg:flex justify-center items-center sticky top-0  py-4 lg:px-8 xl:px-12`}>
                 <div className=" w-full hidden lg:flex justify-between text-base  items-center">
                     <Logo />
                     <div className="flex items-center gap-8">
@@ -83,7 +83,7 @@ export default  function Navbar() {
                               )}
                             </button>
                             {showProfileMenu && (
-                                <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-md">
+                                <div className="absolute right-0 mt-2 w-48 bg-white text-black border rounded-md shadow-md">
                                     <button onClick={handleLogout} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
                                         Log Out
                                     </button>
