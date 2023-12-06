@@ -1,5 +1,5 @@
 import EventCard from "@/components/browseCard";
-import Browse from "../page";
+import Browse from "../browseIndex";
 import EventCards from "../components/Cards";
 
 export default function LiveShows(){

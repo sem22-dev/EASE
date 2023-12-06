@@ -11,9 +11,9 @@ export default function BrowseFilter(){
     return(
         <main className=" ">
             <div className="flex flex-col gap-4">
-                <div className="text-white">
+                {/* <div className="text-white">
                     <Location name={'Imphal'}/>
-                </div>
+                </div> */}
                 <div className=" flex justify-start items-start gap-2">
                     <Category name={'Shows'} iconName="live" path="/browse/shows" />
                     <Category name={'Party'} iconName="power" path="/browse/party" />

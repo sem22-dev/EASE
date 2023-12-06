@@ -57,14 +57,14 @@ export default  function Navbar() {
 
 
     return (
-        <div className={` ${pathname === '/authentication' || pathname === '/authentication/login' ? "hidden" : " inline"} `}>
+        <div className={` ${pathname === '/authentication' || pathname === '/authentication/login' || pathname === '/authentication/login/reset' ? "hidden" : " inline"} `}>
             <nav style={{ backdropFilter: 'blur(6.7px)' }} className={` ${pathname !== '/' ? 'bg-black text-white' : 'bg-white text-black'} ${scrolled ? 'bg-opacity-30' : ''}  z-50 hidden lg:flex justify-center items-center sticky top-0  py-4 lg:px-8 xl:px-12`}>
                 <div className=" w-full hidden lg:flex justify-between text-base  items-center">
                     <Logo />
                     <div className="flex items-center gap-8">
-                        <Link href={'/browse'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>Browse events</p></Link>
-                        <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>About</p></Link>
-                        <Link href={'/'} className={`${pathname === '/' ? ' ' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>Blog</p></Link>
+                        <Link href={'/browse/shows'} className={`${pathname === '/browse/shows' ? ' text-[#4BDE80]' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>Browse events</p></Link>
+                        <Link href={'/about'} className={`${pathname === '/about' ? ' text-[#4BDE80]  ' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>About</p></Link>
+                        <Link href={'/blog'} className={`${pathname === '/blog' ? ' text-[#4BDE80]' : ''} px-2 py-1 rounded-lg`}><p className={` ${pathname === '/browse' ? 'underline-white' : 'underline-black'} under-ani py-2`}>Blog</p></Link>
                         
                         {pathname === '/browse' ?
                         (
@@ -84,13 +84,14 @@ export default  function Navbar() {
                             </button>
                             {showProfileMenu && (
                                 <div className="absolute right-0 mt-2 w-48 bg-white text-black border rounded-md shadow-md">
+                                  <h1 className="px-4 py-2">hi <span className="text-green-700">{session.user?.name}</span></h1>
+                                  <Link href={'/tickets'} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                        My Tickets
+                                    </Link>
                                     <button onClick={handleLogout} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
                                         Log Out
                                     </button>
-                                    {/* Add more options as needed */}
-                                    <Link href={'/tickets'} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
-                                        My Tickets
-                                    </Link>
+                                  
                                 </div>
                             )}
                         </div>

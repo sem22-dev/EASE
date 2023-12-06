@@ -6,6 +6,7 @@ import Footer from '../components/footer'
 import favoritRegular from 'next/font/local'
 import foggyRegular from 'next/font/local'
 import Providers from '@/components/providers'
+import NextTopLoader from 'nextjs-toploader';
 
 
 const roboto = Roboto({
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={` ${favoritR.variable} ${foggyR.variable} font-favoritR`}>
         <Providers session={session}>
+        <NextTopLoader   color="#4BDE80"   showSpinner={false}/>
           <Navbar />
           {children}
           <Footer />

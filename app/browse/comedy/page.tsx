@@ -1,4 +1,4 @@
-import Browse from "../page";
+import Browse from "../browseIndex";
 
 export default function LiveShows(){
     return(

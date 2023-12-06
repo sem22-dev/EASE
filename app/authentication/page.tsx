@@ -6,7 +6,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { UserAuthForm } from "./components/user-auth-form"
-import { DemoCreateAccount } from "./create-account"
+import { DemoCreateAccount } from "@/components/createAccount/create-account"
 import Logo from "@/components/logo"
 
 export const metadata: Metadata = {
@@ -38,23 +38,7 @@ export default function AuthenticationPage() {
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[450px]">
             <DemoCreateAccount />
-            <p className="px-8 text-center text-sm text-muted-foreground">
-              By clicking Create account, you agree to our{" "}
-              <Link
-                href="/terms"
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                Terms of Service
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="/privacy"
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                Privacy Policy
-              </Link>
-              .
-            </p>
+          
           </div>
         </div>
       </div>
