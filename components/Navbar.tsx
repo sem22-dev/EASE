@@ -68,9 +68,9 @@ export default  function Navbar() {
                         
                         {pathname === '/browse' ?
                         (
-                        <Link href={'/'} className={buttonVariants({ variant: "defaultWhite", size: 'lg' })}>List your event</Link>
+                        <Link href={'/publish'} className={buttonVariants({ variant: "defaultWhite", size: 'lg' })}>List your event</Link>
                         ) : (
-                        <Link href={'/'} className={buttonVariants({ variant: "defaultBlack", size: 'lg' })}>List your event</Link>
+                        <Link href={'/publish'} className={buttonVariants({ variant: "defaultBlack", size: 'lg' })}>List your event</Link>
                         )}
 
                         {session ? (
@@ -109,7 +109,7 @@ export default  function Navbar() {
       <nav
         style={{ backdropFilter: 'blur(6.7px)' }}
         className={` ${
-          pathname === '/browse' ? 'bg-black text-white' : 'bg-white text-black'
+          pathname !== '/' ? 'bg-black text-white' : 'bg-white text-black'
         } ${scrolled ? 'bg-opacity-30' : ''} z-50 flex w-full lg:hidden justify-between items-center sticky top-0 py-3 px-4`}
       >
                 <Logo />
@@ -128,21 +128,32 @@ export default  function Navbar() {
                 <X size={23}/>
               </button>
             <div className="bg-white rounded-lg p-4 text-black text-[20px]  w-full mx-4 mt-14 z-10 h-fit">
-              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/'}>
+              {session &&
+                <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/tickets'}>
+                My tickets
+              </Link>
+              }
+              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/browse/shows'}>
                 Browse events
               </Link>
-              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/'}>
+              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/about'}>
                 About
               </Link>
-              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/'}>
+              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/blog'}>
                 Blog
               </Link>
-              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/'}>
+              <Link className="block py-4 border-b" onClick={() => setShowMenu(false)} href={'/publish'}>
                 List your event
               </Link>
-              <Link className="block py-6 text-center uppercase text-sm" onClick={() => setShowMenu(false)} href={'/'}>
-                Log in/Sign up
-              </Link>
+              {!session ? 
+                <Link href={'/authentication/login'} className="block py-6 text-center uppercase text-sm">
+                 Log in/Sign up
+               </Link>
+               :
+               <button onClick={handleLogout} className="block py-6 text-center cursor-pointer uppercase text-sm">
+                Log Out <span className=" lowercase text-green-600">({session.user?.name})</span>
+              </button>
+            }
             </div>
           </div>
         )}

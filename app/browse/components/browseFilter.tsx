@@ -19,7 +19,7 @@ export default function BrowseFilter(){
                     <Category name={'Party'} iconName="power" path="/browse/party" />
                     <Category name={'Comedy'} iconName="comedy" path="/browse/comedy" />
                 </div>
-                <h1 className=" text-4xl text-white md:mt-4">Events <span className="text-gray-600"> in Imphal</span></h1>
+                <h1 className=" text-4xl text-white md:mt-4">Events <span className="text-gray-600"> in Chennai</span></h1>
             </div>
         </main>
     )
